@@ -133,7 +133,7 @@ const Header = () => {
                         <li><a href="#about" onClick={closeMenu}>Mon parcours</a></li>
                         <li><a href="#skills" onClick={closeMenu}>Compétences</a></li>
                         <li><a href="#projects" onClick={closeMenu}>Projets</a></li>
-                        <li><a href="/CV-PaulineB.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>CV</a></li>
+                        <li><a href="/PbCV.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>CV</a></li>
 
                         {/* Bouton contact visible DANS le menu sur mobile */}
                         <li className="mobile-only-btn">
@@ -210,7 +210,7 @@ const AboutSection = () => {
                     </p>
 
                     <div style={{marginTop: '30px'}}>
-                        <a href="/CV-PaulineB.pdf" target="_blank" rel="noopener noreferrer" className="btn-second">
+                        <a href="/PbCV.pdf" target="_blank" rel="noopener noreferrer" className="btn-second">
                             Télécharger mon CV 📄
                         </a>
                     </div>
