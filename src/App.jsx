@@ -1,14 +1,10 @@
-/**
- * PORTFOLIO PERSONNEL
- * Auteur : Pauline Bennoin
- * Date : 2026
- * Description : Portfolio développé en React (Vite/CRA)
- */
+// Import de React pour créer les composants
+import React, {useState} from 'react'; // useState est un "Hook" qui permet de gérer des variables qui changent (comme le menu ouvert/fermé
+import './index.css'; // Lie du fichier CSS pour le style
 
-import React, {useState} from 'react';
-import './index.css';
-
-// --- IMPORTS DES ASSETS (IMAGES) ---
+// --- IMPORTS DES IMAGES ---
+// En react, on traite les images comme des variables
+// Vite se charge de trouver le bon chemin du ficher final
 import PhotoProfil from './assets/photoprofil.webp';
 import portfoliov1 from './assets/portfoliov1.webp';
 import agenda from './assets/Agenda.webp';
@@ -21,12 +17,12 @@ import voyage from './assets/voyage.webp';
 // Facile à modifier pour ajouter un nouveau projet plus tard.
 const projectsData = [
     {
-        id: 1,
+        id: 1, // Identifiant unique
         title: "Shop Ease",
         cat: "Formation",
         desc: "Projet en formation d'une gestion dynamique d'une liste de produits",
         techNames: ["Javascript"],
-        img: shopease,
+        img: shopease, // Variable importée plus en haut
         link: "https://github.com/PaulineB15/Shop-Ease-.git",
     },
     {
@@ -50,7 +46,7 @@ const projectsData = [
 ];
 
 // --- COMPOSANTS ICÔNES SVG ---
-// Composants légers pour les logos (évite d'importer une librairie lourde)
+// Création de composants légers pour les logos (évite d'importer une librairie lourde)
 const IconMail = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -73,26 +69,27 @@ const IconGithub = () => (
 );
 
 
-// --- COMPOSANT PRINCIPAL (LAYOUT) ---
+// --- COMPOSANT PRINCIPAL ---
 function App() {
     return (
         <div className="App">
-            {/* Décoration de fond (Blobs) */}
+            {/* les 3 div créent la décoration de fond (Blobs) */}
             <div className="blob blob-green"></div>
             <div className="blob blob-orange"></div>
             <div className="blob blob-purple"></div>
 
+            {/*Section Header*/}
             <Header />
 
             <main>
-                <HeroSection />
-                <AboutSection />
-                <SkillsSection />
-                <ProjectsSection />
-                <ContactSection />
+                <HeroSection /> {/*Section Héro*/}
+                <AboutSection /> {/*Section à propos*/}
+                <SkillsSection /> {/*Section Compétences*/}
+                <ProjectsSection /> {/*Section Projets*/}
+                <ContactSection /> {/*Section Contact*/}
             </main>
 
-            <Footer />
+            <Footer /> {/*Section Pied de page*/}
         </div>
     );
 }
@@ -101,9 +98,13 @@ function App() {
 // --- HEADER & NAVIGATION ---
 const Header = () => {
     // État (State) pour gérer l'ouverture du menu sur mobile
+    // --- HOOK (STATE) ---
+    // isOpen : la variable (true = menu ouvert, false = menu fermé).
+    // setIsOpen : la fonction pour changer la variable.
+    // useState(false) : L'état initial est "fermé" (false).
     const [isOpen, setIsOpen] = useState(false);
 
-    // Basculer l'état (ouvert/fermé)
+    // Fonction appelée quand on clique sur le burger. Elle inverse la valeur (Vrai devient Faux, Faux devient Vrai).
     const toggleMenu = () => setIsOpen(!isOpen);
 
     // Fermer le menu (utilisé lors du clic sur un lien)
@@ -115,7 +116,8 @@ const Header = () => {
                 {/* Logo cliquable qui ramène en haut */}
                 <a href="#home" className="logo" onClick={closeMenu}>Pauline.</a>
 
-                {/* Bouton Burger (visible uniquement sur mobile via CSS) */}
+                {/* BOUTON BURGER (visible uniquement sur mobile via CSS) */}
+                {/* Au clic, on lance toggleMenu */}
                 <div className="burger-menu" onClick={toggleMenu}>
                     {isOpen ? (
                         // Icône Croix (Fermer)
@@ -126,23 +128,26 @@ const Header = () => {
                     )}
                 </div>
 
-                {/* Menu de navigation */}
+                {/* MENU DE NAVIGATION */}
+                {/* On ajoute dynamiquement la classe CSS 'active' si isOpen est vrai. */}
+                {/* C'est ça qui fait apparaître le menu sur mobile (voir CSS .nav-menu.active) */}
                 <nav className={`nav-menu ${isOpen ? 'active' : ''}`}>
                     <ul className="nav-links">
+                        {/* Chaque lien ferme le menu au clic grâce à onClick={closeMenu} */}
                         <li><a href="#home" onClick={closeMenu}>Accueil</a></li>
                         <li><a href="#about" onClick={closeMenu}>Mon parcours</a></li>
                         <li><a href="#skills" onClick={closeMenu}>Compétences</a></li>
                         <li><a href="#projects" onClick={closeMenu}>Projets</a></li>
                         <li><a href="/PbCV.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>CV</a></li>
 
-                        {/* Bouton contact visible DANS le menu sur mobile */}
+                        {/* Ce bouton n'apparaît que dans le menu mobile (géré par CSS) */}
                         <li className="mobile-only-btn">
                             <a href="#contact" className="btn-main" onClick={closeMenu} style={{display: 'inline-block', marginTop: '10px'}}>Me contacter</a>
                         </li>
                     </ul>
                 </nav>
 
-                {/* Bouton contact visible HORS du menu sur desktop */}
+                {/* Ce bouton n'apparaît que sur PC (géré par CSS) */}
                 <div className="desktop-only-btn">
                     <a href="#contact" className="btn-main">Me contacter</a>
                 </div>
@@ -151,7 +156,7 @@ const Header = () => {
     );
 };
 
-// --- SECTION HERO (ACCUEIL) ---
+// --- SECTION HERO  ---
 const HeroSection = () => (
     <section id="home" className="hero container">
         <div className="hero-content">
@@ -173,13 +178,14 @@ const HeroSection = () => (
             </div>
 
             <div className="hero-img-box">
+                {/* Affichage de la photo de profil importée */}
                 <img src={PhotoProfil} alt="Pauline Bennoin" className="hero-img" />
             </div>
         </div>
     </section>
 );
 
-// --- SECTION PARCOURS (ABOUT) ---
+// --- SECTION A PROPOS ---
 const AboutSection = () => {
     return (
         <section id="about" className="about-section container">
@@ -234,6 +240,8 @@ const SkillsSection = () => {
                     <div className="skills-wrapper">
                         {/* Colonne Hard Skills */}
                         <div className="skill-col">
+                            {/* Au lieu de réécrire le code HTML pour chaque compétence, on appelle SkillItem */}
+                            {/* On lui passe des "props" (name et icon) pour personnaliser chaque ligne */}
                             <h3 style={{color: 'var(--primary-dark)'}}>💻 Hard Skills </h3>
                             <SkillItem name="HTML/CSS | Javascript " icon="🖥️" />
                             <SkillItem name="Node.js | SQL | PHP" icon="⚙️" />
@@ -258,7 +266,8 @@ const SkillsSection = () => {
     );
 };
 
-// Sous-composant pour un item de compétence
+// C'est le moule pour créer une ligne de compétence.
+// Il reçoit { name, icon } et les place dans le HTML.
 const SkillItem = ({ name, icon }) => (
     <div className="skill-item">
         <span className="skill-name">{name}</span>
@@ -272,9 +281,15 @@ const ProjectsSection = () => {
         <section id="projects" className="projects-section container">
             <h2 className="section-title">Mes Projets Récents</h2>
             <div className="projects-grid">
+
+                {/* BOUCLE MAP : */}
+                {/* On prend le tableau 'projectsData' et pour chaque projet (p)... */}
                 {projectsData.map((p) => (
+                    // ... on crée une carte HTML (div project-card).
+                    // key={p.id} est obligatoire pour que React s'y retrouve.
                     <div className="project-card" key={p.id}>
-                        {/* L'image sert aussi de lien */}
+
+                        {/* On utilise p.link, p.img, p.title qui viennent de l'objet */}
                         <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
                             <img src={p.img} alt={p.title} className="project-img" />
                         </a>
@@ -284,7 +299,7 @@ const ProjectsSection = () => {
                             <h3 className="project-title">{p.title}</h3>
                             <p style={{color: 'var(--text-grey)', fontSize: '0.95rem'}}>{p.desc}</p>
 
-                            {/* Badges des technologies */}
+                            {/* Deuxième boucle à l'intérieur pour les badges (JS, CSS...) */}
                             <div className="project-techs" style={{marginBottom: '20px', display: 'flex', flexWrap: 'wrap', gap: '8px'}}>
                                 {p.techNames.map((name, index) => (
                                     <span key={index} style={{
@@ -355,7 +370,7 @@ const ContactSection = () => (
 // --- FOOTER ---
 const Footer = () => (
     <footer className="footer">
-        <p>© 2026 Pauline Bennoin. Fait avec 💚 et du code.</p>
+        <p>© 2026 Pauline Bennoin. Fait avec 💚 et de l'aventure.</p>
     </footer>
 );
 

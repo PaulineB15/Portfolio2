@@ -1,17 +1,25 @@
+
+/* =========================================
+   1. IMPORTS & VARIABLES
+   ========================================= */
+
+/* Import des polices Google Fonts (Outfit pour le texte, Playfair pour les titres) */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 
 :root {
-  /* PALETTE "NATURE & VOYAGE" */
-  /* Vert Menthe / Eau (Principal) */
+  /* --- PALETTE DE COULEURS --- */
+  /* Utiliser des variables permet de changer la couleur de tout le site en une seule ligne */
+
+  /* Vert Menthe / Eau (Couleur Principale) */
   --primary: #2dd4bf;
   --primary-light: #ccfbf1;
   --primary-dark: #0f766e;
 
-  /* Orange Corail (Énergie / Voyage) */
+  /* Orange Corail (Accentuation) */
   --accent-orange: #fb923c;
   --accent-orange-light: #ffedd5;
 
-  /* Violet Lilas (Bien-être / Créativité) */
+  /* Violet Lilas (Accentuation secondaire) */
   --accent-purple: #a78bfa;
   --accent-purple-light: #f3e8ff;
 
@@ -21,21 +29,30 @@
   --text-grey: #57534e;
   --white: #ffffff;
 
-  --container-width: 1100px;
-  --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Forme organique */
+  /* --- DIMENSIONS & FORMES --- */
+  --container-width: 1100px; /* Largeur max du contenu */
+  --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Forme "patate" organique */
   --radius-card: 24px;
-  --shadow: 0 10px 30px -5px rgba(45, 212, 191, 0.15);
+  --shadow: 0 10px 30px -5px rgba(45, 212, 191, 0.15); /* Ombre douce verte */
 }
 
+
+
+/* =========================================
+   2. RESET & BASE
+   ========================================= */
+
+/* Le "Box Sizing" permet de compter les bordures et paddings DANS la largeur de l'élément */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+/* Défilement fluide quand on clique sur une ancre (#contact) */
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Outfit', sans-serif; /* Police moderne et ronde */
   background-color: var(--bg-cream);
   color: var(--text-dark);
-  line-height: 1.7;
-  overflow-x: hidden;
+  line-height: 1.7; /* Aère le texte pour la lisibilité */
+  overflow-x: hidden; /* Empêche le défilement horizontal accidentel */
 }
 
 h1, h2, h3 {
@@ -47,18 +64,21 @@ img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
 
+/* Classe utilitaire pour centrer le contenu et limiter la largeur */
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* --- DECORATION ORGANIQUE --- */
+/* =========================================
+   3. DÉCORATION (BLOBS)
+   ========================================= */
 .blob {
-  position: fixed;
-  z-index: -1;
+  position: fixed; /* Reste fixe quand on scrolle */
+  z-index: -1; /* Reste derrière le texte */
   border-radius: var(--radius-blob);
-  filter: blur(60px);
+  filter: blur(60px); /* Effet flou artistique */
   opacity: 0.6;
 }
 
@@ -66,13 +86,17 @@ ul { list-style: none; }
 .blob-orange { width: 300px; height: 300px; background: var(--accent-orange-light); top: 40%; right: -50px; }
 .blob-purple { width: 350px; height: 350px; background: var(--accent-purple-light); bottom: -50px; left: 20%; }
 
-/* --- HEADER --- */
+
+
+/* =========================================
+   4. HEADER & NAVIGATION
+   ========================================= */
 .header {
   padding: 20px 0;
-  position: sticky;
+  position: sticky; /* Reste collé en haut de l'écran */
   top: 0;
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.7); /* Transparence */
+  -webkit-backdrop-filter: blur(12px); /* Effet "verre dépoli" (flou derrière) */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 1000;
@@ -83,6 +107,7 @@ ul { list-style: none; }
 .nav-links a { font-weight: 500; color: var(--text-dark); font-size: 0.95rem; }
 .nav-links a:hover { color: var(--accent-orange); }
 
+/*Boutons*/
 .btn-main {
   background-color: var(--primary);
   color: white;
@@ -108,10 +133,14 @@ ul { list-style: none; }
   color: white; /* Le texte passe en blanc */
 }
 
-/* --- HERO --- */
+
+/* =========================================
+   5. SECTIONS (HERO, ABOUT, SKILLS)
+   ========================================= */
+
 .hero { padding: 120px 0 80px; position: relative; }
 .hero-content { display: flex; align-items: center; gap: 60px; }
-.hero-text { flex: 1; }
+.hero-text { flex: 1; } /* Prend l'espace disponible */
 
 .tagline {
   display: inline-block;
@@ -138,9 +167,9 @@ ul { list-style: none; }
 }
 .hero-img {
   width: 380px; height: 450px; object-fit: cover;
-  border-radius: 200px 200px 20px 20px; /* Forme arche */
+  border-radius: 200px 200px 20px 20px; /* Forme en Arche */
   z-index: 1;
-  box-shadow: 20px 20px 0 var(--primary-light);
+  box-shadow: 20px 20px 0 var(--primary-light); /* Effet de décalage */
 }
 
 /* --- ABOUT (STORY) --- */
@@ -149,10 +178,10 @@ ul { list-style: none; }
 
 .polaroid-wrapper {
   position: relative;
-  transform: rotate(-3deg);
+  transform: rotate(-3deg); /* Petite rotation fun */
   transition: 0.3s;
 }
-.polaroid-wrapper:hover { transform: rotate(0deg); }
+.polaroid-wrapper:hover { transform: rotate(0deg); } /* Se redresse au survol */
 .polaroid {
   background: white; padding: 15px 15px 50px 15px;
   box-shadow: var(--shadow);
@@ -190,8 +219,14 @@ ul { list-style: none; }
 .skill-name { font-weight: 600; }
 .skill-icon { font-size: 1.2rem; }
 
-/* --- PROJECTS --- */
+
+/* =========================================
+   6. PROJECTS & CONTACT
+   ========================================= */
+
+/* --- PROJETS --- */
 .projects-section { padding: 100px 0; }
+/* Grid Responsive : minmax(280px) assure que ça passe sur les petits téléphones */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 .project-card {
   background: white; border-radius: var(--radius-card); overflow: hidden;
@@ -221,15 +256,17 @@ ul { list-style: none; }
 }
 .social-link:hover { background: var(--primary); color: white; transform: rotate(10deg); }
 
-/* Footer */
+/* --- FOOTER --- */
 .footer { text-align: center; padding: 40px; color: var(--text-grey); font-size: 0.9rem; }
 
 
-/* --- GESTION DU MENU RESPONSIVE --- */
+/* =========================================
+   7. RESPONSIVE (MOBILE & TABLETTE)
+   ========================================= */
 
 /* Par défaut (Desktop) : on cache le burger */
 .burger-menu {
-  display: none;
+  display: none; /* On affiche PAS l'icône burger dans le DESKTOP */
   cursor: pointer;
 }
 
@@ -242,7 +279,7 @@ ul { list-style: none; }
 
   /* 1. Afficher le bouton burger */
   .burger-menu {
-    display: block;
+    display: block; /* On affiche l'icône burger */
     z-index: 1001; /* Doit être au-dessus du menu qui s'ouvre */
   }
 
