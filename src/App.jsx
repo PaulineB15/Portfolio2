@@ -254,9 +254,9 @@ const SkillsSection = () => {
                         <div className="skill-col">
                             <h3 style={{color: 'var(--accent-orange)'}}>✨ Soft Skills</h3>
                             <SkillItem name="Adaptabilité" icon="🦎" />
-                            <SkillItem name="Rigeur" icon="🎯" />
+                            <SkillItem name="Rigueur" icon="🎯" />
                             <SkillItem name="Esprit d'équipe" icon="🤝" />
-                            <SkillItem name="Gestion de projet" icon="📅" />
+                            <SkillItem name="Gestion de projets" icon="📅" />
                             <SkillItem name="Curiosité" icon="🌏" />
                         </div>
                     </div>
