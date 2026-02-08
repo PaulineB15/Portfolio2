@@ -368,10 +368,16 @@ ul { list-style: none; }
     gap: 40px;
   }
 
+
   .polaroid-wrapper {
     transform: rotate(0); /* On remet la photo droite sur mobile */
     margin: 0 auto 20px auto;
     max-width: 350px;
+  }
+
+  .story-text {
+    padding: 0 15px;
+    text-align: center;
   }
 
   /* SKILLS : On passe sur 1 seule colonne */
@@ -387,6 +393,7 @@ ul { list-style: none; }
 
   .section-title {
     font-size: 2rem; /* Titres de section un peu plus petits */
+    text-align: center;
   }
 
 }
