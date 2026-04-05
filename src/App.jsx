@@ -8,7 +8,7 @@ import './index.css'; // Lie du fichier CSS pour le style
 import PhotoProfil from './assets/photoprofil.webp';
 import portfoliov1 from './assets/portfoliov1.webp';
 import agenda from './assets/Agenda.webp';
-import shopease from './assets/shopease.webp';
+import cafthe from './assets/cafthe.webp';
 import voyage from './assets/voyage.webp';
 
 
@@ -18,12 +18,12 @@ import voyage from './assets/voyage.webp';
 const projectsData = [
     {
         id: 1, // Identifiant unique
-        title: "Shop Ease",
+        title: "Cafthé",
         cat: "Formation",
-        desc: "Projet en formation d'une gestion dynamique d'une liste de produits",
-        techNames: ["Javascript"],
-        img: shopease, // Variable importée plus en haut
-        link: "https://github.com/PaulineB15/Shop-Ease-.git",
+        desc: "Projet en formation d'une boutique en ligne de café et de thé",
+        techNames: ["Javascript", "CSS", "React"],
+        img: cafthe, // Variable importée plus en haut
+        link: "https://cafthev2.pbennoin.dev-campus.fr/",
     },
     {
         id: 2,
